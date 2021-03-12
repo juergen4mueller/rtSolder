@@ -1,3 +1,0 @@
-(sym_lib_table
-  (lib (name Solder-rescue)(type Legacy)(uri ${KIPRJMOD}/Solder-rescue.lib)(options "")(descr ""))
-)

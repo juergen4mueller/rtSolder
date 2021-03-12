@@ -1,0 +1,1130 @@
+[p GLOBOPT AUTOSTATIC IEEE_DBL IEEE_FLT PIC14 PIC14E ]
+[d version 1.1 ]
+[d edition pro ]
+[d chip 16F1788 ]
+[d frameptr 6 ]
+"95 /Users/juergenmueller/OneDrive/Elektronik/rtSolder/rtSolder.X/mcc_generated_files/adc.c
+[e E5669 . `uc
+channel_DAC4 24
+channel_DAC3 25
+channel_DAC2 28
+channel_Temperature 29
+channel_DAC1 30
+channel_FVR 31
+AN3_U_Supply 3
+AN2_Temp_Tip 2
+]
+"488 /Users/juergenmueller/OneDrive/Elektronik/rtSolder/rtSolder.X/main.c
+[e E5714 . `uc
+channel_DAC4 24
+channel_DAC3 25
+channel_DAC2 28
+channel_Temperature 29
+channel_DAC1 30
+channel_FVR 31
+AN3_U_Supply 3
+AN2_Temp_Tip 2
+]
+"1 /Applications/microchip/xc8/v2.31/pic/sources/c99/common/abs.c
+[v _abs abs `(i  1 e 2 0 ]
+"7 /Applications/microchip/xc8/v2.31/pic/sources/c99/common/aodiv.c
+[v ___aodiv __aodiv `(o  1 e 8 0 ]
+"7 /Applications/microchip/xc8/v2.31/pic/sources/c99/common/aomod.c
+[v ___aomod __aomod `(o  1 e 8 0 ]
+"4 /Applications/microchip/xc8/v2.31/pic/sources/c99/common/atoi.c
+[v _atoi atoi `(i  1 e 2 0 ]
+"72 /Applications/microchip/xc8/v2.31/pic/sources/c99/common/doprnt.c
+[v _pad pad `(i  1 s 2 pad ]
+"287
+[v _dtoa dtoa `(i  1 s 2 dtoa ]
+"692
+[v _vfpfcnvrt vfpfcnvrt `(i  1 s 2 vfpfcnvrt ]
+"1390
+[v _vfprintf vfprintf `(i  1 e 2 0 ]
+"5 /Applications/microchip/xc8/v2.31/pic/sources/c99/common/isdigit.c
+[v _isdigit isdigit `(i  1 e 2 0 ]
+"5 /Applications/microchip/xc8/v2.31/pic/sources/c99/common/isspace.c
+[v _isspace isspace `(i  1 e 2 0 ]
+"5 /Applications/microchip/xc8/v2.31/pic/sources/c99/common/lwdiv.c
+[v ___lwdiv __lwdiv `(ui  1 e 2 0 ]
+"5 /Applications/microchip/xc8/v2.31/pic/sources/c99/common/lwmod.c
+[v ___lwmod __lwmod `(ui  1 e 2 0 ]
+"8 /Applications/microchip/xc8/v2.31/pic/sources/c99/common/nf_fputc.c
+[v _fputc fputc `(i  1 e 2 0 ]
+"8 /Applications/microchip/xc8/v2.31/pic/sources/c99/common/nf_fputs.c
+[v _fputs fputs `(i  1 e 2 0 ]
+"9 /Applications/microchip/xc8/v2.31/pic/sources/c99/common/nf_sprintf.c
+[v _sprintf sprintf `(i  1 e 2 0 ]
+"7 /Applications/microchip/xc8/v2.31/pic/sources/c99/common/putch.c
+[v _putch putch `(v  1 e 1 0 ]
+"10 /Applications/microchip/xc8/v2.31/pic/sources/c99/common/sprcadd.c
+[v ___fladd __fladd `(d  1 e 4 0 ]
+"5 /Applications/microchip/xc8/v2.31/pic/sources/c99/common/strlen.c
+[v _strlen strlen `(ui  1 e 2 0 ]
+"15 /Applications/microchip/xc8/v2.31/pic/sources/c99/common/Umul16.c
+[v ___wmul __wmul `(ui  1 e 2 0 ]
+"4 /Applications/microchip/xc8/v2.31/pic/sources/c99/common/Umul8_16.c
+[v __Umul8_16 _Umul8_16 `(ui  1 e 2 0 ]
+"6 /Applications/microchip/xc8/v2.31/pic/sources/c99/pic/__eeprom.c
+[v ___eecpymem __eecpymem `(v  1 e 1 0 ]
+"39
+[v ___memcpyee __memcpyee `(v  1 e 1 0 ]
+"124 /Users/juergenmueller/OneDrive/Elektronik/rtSolder/rtSolder.X/main.c
+[v _timer1_fired timer1_fired `(v  1 e 1 0 ]
+"128
+[v _init_system init_system `(v  1 e 1 0 ]
+"158
+[v _calc_tip_temperatur calc_tip_temperatur `(us  1 e 2 0 ]
+"168
+[v _calc_supply_voltage calc_supply_voltage `(us  1 e 2 0 ]
+"209
+[v _get_switch_state get_switch_state `(uc  1 e 1 0 ]
+"253
+[v _proc_off proc_off `(v  1 e 1 0 ]
+"284
+[v _proc_menue proc_menue `(v  1 e 1 0 ]
+"425
+[v _proc_solder proc_solder `(v  1 e 1 0 ]
+"682
+[v _main main `(v  1 e 1 0 ]
+"70 /Users/juergenmueller/OneDrive/Elektronik/rtSolder/rtSolder.X/mcc_generated_files/adc.c
+[v _ADC_Initialize ADC_Initialize `(v  1 e 1 0 ]
+"95
+[v _ADC_StartConversion ADC_StartConversion `(v  1 e 1 0 ]
+[v i1_ADC_StartConversion ADC_StartConversion `(v  1 e 1 0 ]
+"116
+[v _ADC_GetConversionResult ADC_GetConversionResult `(us  1 e 2 0 ]
+"150
+[v _ADC_ISR ADC_ISR `(v  1 e 1 0 ]
+"58 /Users/juergenmueller/OneDrive/Elektronik/rtSolder/rtSolder.X/mcc_generated_files/fvr.c
+[v _FVR_Initialize FVR_Initialize `(v  1 e 1 0 ]
+"52 /Users/juergenmueller/OneDrive/Elektronik/rtSolder/rtSolder.X/mcc_generated_files/interrupt_manager.c
+[v _INTERRUPT_InterruptManager INTERRUPT_InterruptManager `II(v  1 e 1 0 ]
+"50 /Users/juergenmueller/OneDrive/Elektronik/rtSolder/rtSolder.X/mcc_generated_files/mcc.c
+[v _SYSTEM_Initialize SYSTEM_Initialize `(v  1 e 1 0 ]
+"61
+[v _OSCILLATOR_Initialize OSCILLATOR_Initialize `(v  1 e 1 0 ]
+"77
+[v _WDT_Initialize WDT_Initialize `(v  1 e 1 0 ]
+"58 /Users/juergenmueller/OneDrive/Elektronik/rtSolder/rtSolder.X/mcc_generated_files/memory.c
+[v _FLASH_ReadWord FLASH_ReadWord `(us  1 e 2 0 ]
+"95
+[v _FLASH_WriteBlock FLASH_WriteBlock `(c  1 e 1 0 ]
+"156
+[v _FLASH_EraseBlock FLASH_EraseBlock `(v  1 e 1 0 ]
+"187
+[v _DATAEE_WriteByte DATAEE_WriteByte `(v  1 e 1 0 ]
+"211
+[v _DATAEE_ReadByte DATAEE_ReadByte `(uc  1 e 1 0 ]
+"57 /Users/juergenmueller/OneDrive/Elektronik/rtSolder/rtSolder.X/mcc_generated_files/pin_manager.c
+[v _PIN_MANAGER_Initialize PIN_MANAGER_Initialize `(v  1 e 1 0 ]
+"140
+[v _IOCAF0_ISR IOCAF0_ISR `(v  1 e 1 0 ]
+"155
+[v _IOCAF0_SetInterruptHandler IOCAF0_SetInterruptHandler `(v  1 e 1 0 ]
+"162
+[v _IOCAF0_DefaultInterruptHandler IOCAF0_DefaultInterruptHandler `(v  1 e 1 0 ]
+"64 /Users/juergenmueller/OneDrive/Elektronik/rtSolder/rtSolder.X/mcc_generated_files/tmr1.c
+[v _TMR1_Initialize TMR1_Initialize `(v  1 e 1 0 ]
+"93
+[v _TMR1_StartTimer TMR1_StartTimer `(v  1 e 1 0 ]
+"120
+[v _TMR1_WriteTimer TMR1_WriteTimer `(v  1 e 1 0 ]
+"157
+[v _TMR1_ISR TMR1_ISR `(v  1 e 1 0 ]
+"171
+[v _TMR1_SetInterruptHandler TMR1_SetInterruptHandler `(v  1 e 1 0 ]
+"175
+[v _TMR1_DefaultInterruptHandler TMR1_DefaultInterruptHandler `(v  1 e 1 0 ]
+"17 /Users/juergenmueller/OneDrive/Elektronik/rtSolder/rtSolder.X/OLED/i2c1.c
+[v _initI2C initI2C `(v  1 e 1 0 ]
+"32
+[v _waitI2C waitI2C `(v  1 e 1 0 ]
+"40
+[v _idleI2C idleI2C `(v  1 e 1 0 ]
+"46
+[v _startI2C startI2C `(v  1 e 1 0 ]
+"60
+[v _stopI2C stopI2C `(v  1 e 1 0 ]
+"69
+[v _sendI2C sendI2C `(uc  1 e 1 0 ]
+"21 /Users/juergenmueller/OneDrive/Elektronik/rtSolder/rtSolder.X/OLED/lcd.c
+[v _lcd_init lcd_init `(v  1 e 1 0 ]
+"81
+[v _lcd_sendCommand lcd_sendCommand `(v  1 e 1 0 ]
+"96
+[v _lcd_invert lcd_invert `(v  1 e 1 0 ]
+"112
+[v _lcd_sendFramebuffer lcd_sendFramebuffer `(v  1 e 1 0 ]
+"147
+[v _fb_drawPixel fb_drawPixel `(v  1 e 1 0 ]
+"169
+[v _fb_drawVLine fb_drawVLine `(v  1 e 1 0 ]
+"182
+[v _fb_drawHLine fb_drawHLine `(v  1 e 1 0 ]
+"223
+[v _fb_clear fb_clear `(v  1 e 1 0 ]
+"244
+[v _fb_show fb_show `(v  1 e 1 0 ]
+"260
+[v _fb_draw_char fb_draw_char `(v  1 e 1 0 ]
+"271
+[v _fb_draw_char_big fb_draw_char_big `(v  1 e 1 0 ]
+"280
+[v _fb_draw_char_super_big fb_draw_char_super_big `(v  1 e 1 0 ]
+"294
+[v _fb_draw_string fb_draw_string `(v  1 e 1 0 ]
+"318
+[v _fb_draw_string_big fb_draw_string_big `(v  1 e 1 0 ]
+"8 /Users/juergenmueller/OneDrive/Elektronik/rtSolder/rtSolder.X/OLED/font.h
+[v _font font `DC[419]uc  1 e 419 0 ]
+"231
+[v _font_3 font_3 `DC[24][45]uc  1 e 1080 0 ]
+[s S435 . 1 `uc 1 IOCIF 1 0 :1:0 
+`uc 1 INTF 1 0 :1:1 
+`uc 1 TMR0IF 1 0 :1:2 
+`uc 1 IOCIE 1 0 :1:3 
+`uc 1 INTE 1 0 :1:4 
+`uc 1 TMR0IE 1 0 :1:5 
+`uc 1 PEIE 1 0 :1:6 
+`uc 1 GIE 1 0 :1:7 
+]
+"374 /Applications/microchip/mplabx/v5.45/packs/Microchip/PIC12-16F1xxx_DFP/1.2.63/xc8/pic/include/proc/pic16f1788.h
+[s S444 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 T0IF 1 0 :1:2 
+`uc 1 . 1 0 :2:3 
+`uc 1 T0IE 1 0 :1:5 
+]
+[u S449 . 1 `S435 1 . 1 0 `S444 1 . 1 0 ]
+[v _INTCONbits INTCONbits `VES449  1 e 1 @11 ]
+[s S962 . 1 `uc 1 RA0 1 0 :1:0 
+`uc 1 RA1 1 0 :1:1 
+`uc 1 RA2 1 0 :1:2 
+`uc 1 RA3 1 0 :1:3 
+`uc 1 RA4 1 0 :1:4 
+`uc 1 RA5 1 0 :1:5 
+`uc 1 RA6 1 0 :1:6 
+`uc 1 RA7 1 0 :1:7 
+]
+"449
+[s S971 . 1 `uc 1 PORTA 1 0 :8:0 
+]
+[u S973 . 1 `S962 1 . 1 0 `S971 1 . 1 0 ]
+[v _PORTAbits PORTAbits `VES973  1 e 1 @12 ]
+[s S988 . 1 `uc 1 RB0 1 0 :1:0 
+`uc 1 RB1 1 0 :1:1 
+`uc 1 RB2 1 0 :1:2 
+`uc 1 RB3 1 0 :1:3 
+`uc 1 RB4 1 0 :1:4 
+`uc 1 RB5 1 0 :1:5 
+`uc 1 RB6 1 0 :1:6 
+`uc 1 RB7 1 0 :1:7 
+]
+"519
+[s S997 . 1 `uc 1 PORTB 1 0 :8:0 
+]
+[u S999 . 1 `S988 1 . 1 0 `S997 1 . 1 0 ]
+[v _PORTBbits PORTBbits `VES999  1 e 1 @13 ]
+[s S146 . 1 `uc 1 TMR1IF 1 0 :1:0 
+`uc 1 TMR2IF 1 0 :1:1 
+`uc 1 CCP1IF 1 0 :1:2 
+`uc 1 SSP1IF 1 0 :1:3 
+`uc 1 TXIF 1 0 :1:4 
+`uc 1 RCIF 1 0 :1:5 
+`uc 1 ADIF 1 0 :1:6 
+`uc 1 TMR1GIF 1 0 :1:7 
+]
+"685
+[u S155 . 1 `S146 1 . 1 0 ]
+[v _PIR1bits PIR1bits `VES155  1 e 1 @17 ]
+"902
+[v _TMR1L TMR1L `VEuc  1 e 1 @22 ]
+"922
+[v _TMR1H TMR1H `VEuc  1 e 1 @23 ]
+"942
+[v _T1CON T1CON `VEuc  1 e 1 @24 ]
+[s S549 . 1 `uc 1 TMR1ON 1 0 :1:0 
+`uc 1 . 1 0 :1:1 
+`uc 1 nT1SYNC 1 0 :1:2 
+`uc 1 T1OSCEN 1 0 :1:3 
+`uc 1 T1CKPS0 1 0 :1:4 
+`uc 1 T1CKPS1 1 0 :1:5 
+`uc 1 TMR1CS0 1 0 :1:6 
+`uc 1 TMR1CS1 1 0 :1:7 
+]
+"964
+[s S558 . 1 `uc 1 . 1 0 :4:0 
+`uc 1 T1CKPS 1 0 :2:4 
+`uc 1 TMR1CS 1 0 :2:6 
+]
+[u S562 . 1 `S549 1 . 1 0 `S558 1 . 1 0 ]
+[v _T1CONbits T1CONbits `VES562  1 e 1 @24 ]
+"1014
+[v _T1GCON T1GCON `VEuc  1 e 1 @25 ]
+"1195
+[v _TRISA TRISA `VEuc  1 e 1 @140 ]
+"1265
+[v _TRISB TRISB `VEuc  1 e 1 @141 ]
+"1335
+[v _TRISC TRISC `VEuc  1 e 1 @142 ]
+[s S1062 . 1 `uc 1 TRISC0 1 0 :1:0 
+`uc 1 TRISC1 1 0 :1:1 
+`uc 1 TRISC2 1 0 :1:2 
+`uc 1 TRISC3 1 0 :1:3 
+`uc 1 TRISC4 1 0 :1:4 
+`uc 1 TRISC5 1 0 :1:5 
+`uc 1 TRISC6 1 0 :1:6 
+`uc 1 TRISC7 1 0 :1:7 
+]
+"1355
+[s S1071 . 1 `uc 1 TRISC 1 0 :8:0 
+]
+[u S1073 . 1 `S1062 1 . 1 0 `S1071 1 . 1 0 ]
+[v _TRISCbits TRISCbits `VES1073  1 e 1 @142 ]
+"1405
+[v _TRISE TRISE `VEuc  1 e 1 @144 ]
+[s S66 . 1 `uc 1 TMR1IE 1 0 :1:0 
+`uc 1 TMR2IE 1 0 :1:1 
+`uc 1 CCP1IE 1 0 :1:2 
+`uc 1 SSP1IE 1 0 :1:3 
+`uc 1 TXIE 1 0 :1:4 
+`uc 1 RCIE 1 0 :1:5 
+`uc 1 ADIE 1 0 :1:6 
+`uc 1 TMR1GIE 1 0 :1:7 
+]
+"1451
+[u S75 . 1 `S66 1 . 1 0 ]
+[v _PIE1bits PIE1bits `VES75  1 e 1 @145 ]
+[s S256 . 1 `uc 1 PS0 1 0 :1:0 
+`uc 1 PS1 1 0 :1:1 
+`uc 1 PS2 1 0 :1:2 
+`uc 1 PSA 1 0 :1:3 
+`uc 1 TMR0SE 1 0 :1:4 
+`uc 1 TMR0CS 1 0 :1:5 
+`uc 1 INTEDG 1 0 :1:6 
+`uc 1 nWPUEN 1 0 :1:7 
+]
+"1673
+[s S265 . 1 `uc 1 PS 1 0 :3:0 
+`uc 1 . 1 0 :1:3 
+`uc 1 T0SE 1 0 :1:4 
+`uc 1 T0CS 1 0 :1:5 
+]
+[u S270 . 1 `S256 1 . 1 0 `S265 1 . 1 0 ]
+[v _OPTION_REGbits OPTION_REGbits `VES270  1 e 1 @149 ]
+"1790
+[v _WDTCON WDTCON `VEuc  1 e 1 @151 ]
+"1849
+[v _OSCTUNE OSCTUNE `VEuc  1 e 1 @152 ]
+"1907
+[v _OSCCON OSCCON `VEuc  1 e 1 @153 ]
+"1979
+[v _OSCSTAT OSCSTAT `VEuc  1 e 1 @154 ]
+"2048
+[v _ADRESL ADRESL `VEuc  1 e 1 @155 ]
+"2068
+[v _ADRESH ADRESH `VEuc  1 e 1 @156 ]
+"2088
+[v _ADCON0 ADCON0 `VEuc  1 e 1 @157 ]
+[s S96 . 1 `uc 1 ADON 1 0 :1:0 
+`uc 1 GO_nDONE 1 0 :1:1 
+`uc 1 CHS0 1 0 :1:2 
+`uc 1 CHS1 1 0 :1:3 
+`uc 1 CHS2 1 0 :1:4 
+`uc 1 CHS3 1 0 :1:5 
+`uc 1 CHS4 1 0 :1:6 
+`uc 1 ADRMD 1 0 :1:7 
+]
+"2118
+[s S105 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 ADGO 1 0 :1:1 
+`uc 1 CHS 1 0 :5:2 
+]
+[s S109 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 GO 1 0 :1:1 
+]
+[s S112 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 DONE 1 0 :1:1 
+]
+[u S115 . 1 `S96 1 . 1 0 `S105 1 . 1 0 `S109 1 . 1 0 `S112 1 . 1 0 ]
+[v _ADCON0bits ADCON0bits `VES115  1 e 1 @157 ]
+"2183
+[v _ADCON1 ADCON1 `VEuc  1 e 1 @158 ]
+"2255
+[v _ADCON2 ADCON2 `VEuc  1 e 1 @159 ]
+"2331
+[v _LATA LATA `VEuc  1 e 1 @268 ]
+"2401
+[v _LATB LATB `VEuc  1 e 1 @269 ]
+"2471
+[v _LATC LATC `VEuc  1 e 1 @270 ]
+[s S1036 . 1 `uc 1 LATC0 1 0 :1:0 
+`uc 1 LATC1 1 0 :1:1 
+`uc 1 LATC2 1 0 :1:2 
+`uc 1 LATC3 1 0 :1:3 
+`uc 1 LATC4 1 0 :1:4 
+`uc 1 LATC5 1 0 :1:5 
+`uc 1 LATC6 1 0 :1:6 
+`uc 1 LATC7 1 0 :1:7 
+]
+"2491
+[s S1045 . 1 `uc 1 LATC 1 0 :8:0 
+]
+[u S1047 . 1 `S1036 1 . 1 0 `S1045 1 . 1 0 ]
+[v _LATCbits LATCbits `VES1047  1 e 1 @270 ]
+"2855
+[v _BORCON BORCON `VEuc  1 e 1 @278 ]
+"2888
+[v _FVRCON FVRCON `VEuc  1 e 1 @279 ]
+"3332
+[v _APFCON2 APFCON2 `VEuc  1 e 1 @284 ]
+"3358
+[v _APFCON1 APFCON1 `VEuc  1 e 1 @285 ]
+"3676
+[v _ANSELA ANSELA `VEuc  1 e 1 @396 ]
+"3741
+[v _ANSELB ANSELB `VEuc  1 e 1 @397 ]
+"3805
+[v _ANSELC ANSELC `VEuc  1 e 1 @398 ]
+"3874
+[v _EEADRL EEADRL `VEuc  1 e 1 @401 ]
+"3921
+[v _EEDATL EEDATL `VEuc  1 e 1 @403 ]
+[s S664 . 1 `uc 1 RD 1 0 :1:0 
+`uc 1 WR 1 0 :1:1 
+`uc 1 WREN 1 0 :1:2 
+`uc 1 WRERR 1 0 :1:3 
+`uc 1 FREE 1 0 :1:4 
+`uc 1 LWLO 1 0 :1:5 
+`uc 1 CFGS 1 0 :1:6 
+`uc 1 EEPGD 1 0 :1:7 
+]
+"3996
+[u S673 . 1 `S664 1 . 1 0 ]
+[v _EECON1bits EECON1bits `VES673  1 e 1 @405 ]
+"4041
+[v _EECON2 EECON2 `VEuc  1 e 1 @406 ]
+"4927
+[v _WPUA WPUA `VEuc  1 e 1 @524 ]
+"4997
+[v _WPUB WPUB `VEuc  1 e 1 @525 ]
+"5067
+[v _WPUC WPUC `VEuc  1 e 1 @526 ]
+"5137
+[v _WPUE WPUE `VEuc  1 e 1 @528 ]
+"5166
+[v _SSP1BUF SSP1BUF `VEuc  1 e 1 @529 ]
+"5420
+[v _SSP1ADD SSP1ADD `VEuc  1 e 1 @530 ]
+[s S897 . 1 `uc 1 BF 1 0 :1:0 
+`uc 1 UA 1 0 :1:1 
+`uc 1 R_nW 1 0 :1:2 
+`uc 1 S 1 0 :1:3 
+`uc 1 P 1 0 :1:4 
+`uc 1 D_nA 1 0 :1:5 
+`uc 1 CKE 1 0 :1:6 
+`uc 1 SMP 1 0 :1:7 
+]
+"5950
+[u S906 . 1 `S897 1 . 1 0 ]
+[v _SSP1STATbits SSP1STATbits `VES906  1 e 1 @532 ]
+[s S837 . 1 `uc 1 SSPM 1 0 :4:0 
+`uc 1 CKP 1 0 :1:4 
+`uc 1 SSPEN 1 0 :1:5 
+`uc 1 SSPOV 1 0 :1:6 
+`uc 1 WCOL 1 0 :1:7 
+]
+"6083
+[s S843 . 1 `uc 1 SSPM0 1 0 :1:0 
+`uc 1 SSPM1 1 0 :1:1 
+`uc 1 SSPM2 1 0 :1:2 
+`uc 1 SSPM3 1 0 :1:3 
+]
+[u S848 . 1 `S837 1 . 1 0 `S843 1 . 1 0 ]
+[v _SSP1CON1bits SSP1CON1bits `VES848  1 e 1 @533 ]
+"6320
+[v _SSP1CON2 SSP1CON2 `VEuc  1 e 1 @534 ]
+[s S864 . 1 `uc 1 SEN 1 0 :1:0 
+`uc 1 RSEN 1 0 :1:1 
+`uc 1 PEN 1 0 :1:2 
+`uc 1 RCEN 1 0 :1:3 
+`uc 1 ACKEN 1 0 :1:4 
+`uc 1 ACKDT 1 0 :1:5 
+`uc 1 ACKSTAT 1 0 :1:6 
+`uc 1 GCEN 1 0 :1:7 
+]
+"6342
+[u S873 . 1 `S864 1 . 1 0 ]
+[v _SSP1CON2bits SSP1CON2bits `VES873  1 e 1 @534 ]
+"6564
+[v _ODCONA ODCONA `VEuc  1 e 1 @652 ]
+"6634
+[v _ODCONB ODCONB `VEuc  1 e 1 @653 ]
+"6704
+[v _ODCONC ODCONC `VEuc  1 e 1 @654 ]
+"6996
+[v _SLRCONA SLRCONA `VEuc  1 e 1 @780 ]
+"7066
+[v _SLRCONB SLRCONB `VEuc  1 e 1 @781 ]
+"7136
+[v _SLRCONC SLRCONC `VEuc  1 e 1 @782 ]
+[s S348 . 1 `uc 1 IOCAP0 1 0 :1:0 
+`uc 1 IOCAP1 1 0 :1:1 
+`uc 1 IOCAP2 1 0 :1:2 
+`uc 1 IOCAP3 1 0 :1:3 
+`uc 1 IOCAP4 1 0 :1:4 
+`uc 1 IOCAP5 1 0 :1:5 
+`uc 1 IOCAP6 1 0 :1:6 
+`uc 1 IOCAP7 1 0 :1:7 
+]
+"7576
+[s S357 . 1 `uc 1 IOCAP 1 0 :8:0 
+]
+[u S359 . 1 `S348 1 . 1 0 `S357 1 . 1 0 ]
+[v _IOCAPbits IOCAPbits `VES359  1 e 1 @913 ]
+[s S322 . 1 `uc 1 IOCAN0 1 0 :1:0 
+`uc 1 IOCAN1 1 0 :1:1 
+`uc 1 IOCAN2 1 0 :1:2 
+`uc 1 IOCAN3 1 0 :1:3 
+`uc 1 IOCAN4 1 0 :1:4 
+`uc 1 IOCAN5 1 0 :1:5 
+`uc 1 IOCAN6 1 0 :1:6 
+`uc 1 IOCAN7 1 0 :1:7 
+]
+"7646
+[s S331 . 1 `uc 1 IOCAN 1 0 :8:0 
+]
+[u S333 . 1 `S322 1 . 1 0 `S331 1 . 1 0 ]
+[v _IOCANbits IOCANbits `VES333  1 e 1 @914 ]
+[s S296 . 1 `uc 1 IOCAF0 1 0 :1:0 
+`uc 1 IOCAF1 1 0 :1:1 
+`uc 1 IOCAF2 1 0 :1:2 
+`uc 1 IOCAF3 1 0 :1:3 
+`uc 1 IOCAF4 1 0 :1:4 
+`uc 1 IOCAF5 1 0 :1:5 
+`uc 1 IOCAF6 1 0 :1:6 
+`uc 1 IOCAF7 1 0 :1:7 
+]
+"7716
+[s S305 . 1 `uc 1 IOCAF 1 0 :8:0 
+]
+[u S307 . 1 `S296 1 . 1 0 `S305 1 . 1 0 ]
+[v _IOCAFbits IOCAFbits `VES307  1 e 1 @915 ]
+"18028
+[v _PLLR PLLR `VEb  1 e 0 @1238 ]
+"55 /Applications/microchip/xc8/v2.31/pic/sources/c99/common/doprnt.c
+[v _flags flags `i  1 s 2 flags ]
+[v _prec prec `i  1 s 2 prec ]
+[v _width width `i  1 s 2 width ]
+"66
+[v _dbuf dbuf `[32]uc  1 s 32 dbuf ]
+"69
+[v _nout nout `i  1 s 2 nout ]
+"51 /Users/juergenmueller/OneDrive/Elektronik/rtSolder/rtSolder.X/main.c
+[v _loads_per_minute loads_per_minute `us  1 e 2 0 ]
+"52
+[v _time_counter time_counter `us  1 e 2 0 ]
+"53
+[v _counter_200ms counter_200ms `us  1 e 2 0 ]
+"54
+[v _counter_minutes counter_minutes `uc  1 e 1 0 ]
+"87
+[v _counter2ms_solder counter2ms_solder `uc  1 e 1 0 ]
+"88
+[v _tmr_2ms tmr_2ms `uc  1 e 1 0 ]
+[v _tmr1_msg tmr1_msg `uc  1 e 1 0 ]
+"91
+[v _Temperatur_TIP Temperatur_TIP `us  1 e 2 0 ]
+"92
+[v _U_Supply U_Supply `us  1 e 2 0 ]
+"93
+[v _TEMP_SOLL TEMP_SOLL `us  1 e 2 0 ]
+"96
+[v _Temp_Anz_Filter Temp_Anz_Filter `[16]us  1 e 32 0 ]
+"97
+[v _Temp_Anz_pos Temp_Anz_pos `uc  1 e 1 0 ]
+"99
+[v _text_out text_out `[30]uc  1 e 30 0 ]
+"105
+[v _mode mode `uc  1 e 1 0 ]
+"113
+[v _solder_display_mode solder_display_mode `uc  1 e 1 0 ]
+"115
+[v _EE_solltemperatur EE_solltemperatur `uc  1 e 1 0 ]
+"116
+[v _EE_soll_Power EE_soll_Power `uc  1 e 1 0 ]
+"121
+[v _EE_AutoOff EE_AutoOff `uc  1 e 1 0 ]
+"122
+[v _x x `uc  1 e 1 0 ]
+"419
+[v _nh nh `uc  1 e 1 0 ]
+[v _nz nz `uc  1 e 1 0 ]
+[v _ne ne `uc  1 e 1 0 ]
+"420
+[v _Temperatur_Anzeige Temperatur_Anzeige `us  1 e 2 0 ]
+"421
+[v _display_pulses_per_minute display_pulses_per_minute `us  1 e 2 0 ]
+"422
+[v _counter2ms_blink counter2ms_blink `uc  1 e 1 0 ]
+"55 /Users/juergenmueller/OneDrive/Elektronik/rtSolder/rtSolder.X/mcc_generated_files/adc.c
+[v _meassure_number meassure_number `uc  1 e 1 0 ]
+"56
+[v _an_in_pos an_in_pos `uc  1 e 1 0 ]
+"57
+[v _AN_IN_Temp AN_IN_Temp `us  1 e 2 0 ]
+[v _AN_IN_U_Supply AN_IN_U_Supply `us  1 e 2 0 ]
+"58
+[v _AN_Sample AN_Sample `[2][16]us  1 e 64 0 ]
+"149
+[v _i i `uc  1 e 1 0 ]
+"54 /Users/juergenmueller/OneDrive/Elektronik/rtSolder/rtSolder.X/mcc_generated_files/pin_manager.c
+[v _IOCAF0_InterruptHandler IOCAF0_InterruptHandler `*.37(v  1 e 2 0 ]
+"57 /Users/juergenmueller/OneDrive/Elektronik/rtSolder/rtSolder.X/mcc_generated_files/tmr1.c
+[v _timer1ReloadVal timer1ReloadVal `VEus  1 e 2 0 ]
+"58
+[v _TMR1_InterruptHandler TMR1_InterruptHandler `*.37(v  1 e 2 0 ]
+"107 /Users/juergenmueller/OneDrive/Elektronik/rtSolder/rtSolder.X/OLED/font.h
+[v _font2 font2 `DC[65][24]uc  1 s 1560 font2 ]
+"13 /Users/juergenmueller/OneDrive/Elektronik/rtSolder/rtSolder.X/OLED/lcd.c
+[v _buffer buffer `[512]uc  1 e 512 @9712 ]
+"682 /Users/juergenmueller/OneDrive/Elektronik/rtSolder/rtSolder.X/main.c
+[v _main main `(v  1 e 1 0 ]
+{
+"736
+} 0
+"425
+[v _proc_solder proc_solder `(v  1 e 1 0 ]
+{
+"464
+[v proc_solder@switch_State switch_State `uc  1 a 1 23 ]
+"426
+[v proc_solder@counter2ms_solder counter2ms_solder `uc  1 s 1 counter2ms_solder ]
+"680
+} 0
+"294 /Users/juergenmueller/OneDrive/Elektronik/rtSolder/rtSolder.X/OLED/lcd.c
+[v _fb_draw_string fb_draw_string `(v  1 e 1 0 ]
+{
+"296
+[v fb_draw_string@lIndex lIndex `us  1 a 2 27 ]
+[v fb_draw_string@k k `us  1 a 2 25 ]
+"294
+[v fb_draw_string@x x `us  1 p 2 20 ]
+[v fb_draw_string@y y `us  1 p 2 22 ]
+[v fb_draw_string@pS pS `*.5DCuc  1 p 1 24 ]
+"316
+} 0
+"260
+[v _fb_draw_char fb_draw_char `(v  1 e 1 0 ]
+{
+"262
+[v fb_draw_char@bufIndex bufIndex `us  1 a 2 17 ]
+"263
+[v fb_draw_char@j j `uc  1 a 1 19 ]
+"260
+[v fb_draw_char@x x `us  1 p 2 0 ]
+[v fb_draw_char@y y `us  1 p 2 2 ]
+[v fb_draw_char@fIndex fIndex `us  1 p 2 4 ]
+"269
+} 0
+"271
+[v _fb_draw_char_big fb_draw_char_big `(v  1 e 1 0 ]
+{
+"273
+[v fb_draw_char_big@k k `uc  1 a 1 30 ]
+"271
+[v fb_draw_char_big@x x `us  1 p 2 4 ]
+[v fb_draw_char_big@y y `us  1 p 2 6 ]
+[v fb_draw_char_big@fIndex fIndex `DCuc  1 p 1 8 ]
+"279
+} 0
+"158 /Users/juergenmueller/OneDrive/Elektronik/rtSolder/rtSolder.X/main.c
+[v _calc_tip_temperatur calc_tip_temperatur `(us  1 e 2 0 ]
+{
+"165
+[v calc_tip_temperatur@calcValue calcValue `us  1 a 2 2 ]
+"158
+[v calc_tip_temperatur@adc_value adc_value `us  1 p 2 4 ]
+"167
+} 0
+"168
+[v _calc_supply_voltage calc_supply_voltage `(us  1 e 2 0 ]
+{
+[v calc_supply_voltage@adc_value adc_value `us  1 p 2 4 ]
+"177
+} 0
+"5 /Applications/microchip/xc8/v2.31/pic/sources/c99/common/lwmod.c
+[v ___lwmod __lwmod `(ui  1 e 2 0 ]
+{
+"10
+[v ___lwmod@counter counter `uc  1 a 1 5 ]
+"5
+[v ___lwmod@divisor divisor `ui  1 p 2 0 ]
+[v ___lwmod@dividend dividend `ui  1 p 2 2 ]
+"25
+} 0
+"5 /Applications/microchip/xc8/v2.31/pic/sources/c99/common/lwdiv.c
+[v ___lwdiv __lwdiv `(ui  1 e 2 0 ]
+{
+"10
+[v ___lwdiv@quotient quotient `ui  1 a 2 9 ]
+"11
+[v ___lwdiv@counter counter `uc  1 a 1 11 ]
+"5
+[v ___lwdiv@divisor divisor `ui  1 p 2 4 ]
+[v ___lwdiv@dividend dividend `ui  1 p 2 6 ]
+"30
+} 0
+"95 /Users/juergenmueller/OneDrive/Elektronik/rtSolder/rtSolder.X/mcc_generated_files/adc.c
+[v _ADC_StartConversion ADC_StartConversion `(v  1 e 1 0 ]
+{
+[v ADC_StartConversion@channel channel `E5669  1 a 1 wreg ]
+[v ADC_StartConversion@channel channel `E5669  1 a 1 wreg ]
+"98
+[v ADC_StartConversion@channel channel `E5669  1 a 1 5 ]
+"108
+} 0
+"253 /Users/juergenmueller/OneDrive/Elektronik/rtSolder/rtSolder.X/main.c
+[v _proc_off proc_off `(v  1 e 1 0 ]
+{
+"254
+[v proc_off@switch_state switch_state `uc  1 a 1 31 ]
+"255
+[v proc_off@counter_display_2ms counter_display_2ms `us  1 s 2 counter_display_2ms ]
+"282
+} 0
+"284
+[v _proc_menue proc_menue `(v  1 e 1 0 ]
+{
+"286
+[v proc_menue@switch_state switch_state `uc  1 a 1 25 ]
+"285
+[v proc_menue@menue_state menue_state `uc  1 s 1 menue_state ]
+"417
+} 0
+"9 /Applications/microchip/xc8/v2.31/pic/sources/c99/common/nf_sprintf.c
+[v _sprintf sprintf `(i  1 e 2 0 ]
+{
+[v sprintf@s s `*.5uc  1 a 1 wreg ]
+[s S1697 _IO_FILE 5 `*.5uc 1 buffer 1 0 `i 1 count 2 1 `i 1 limit 2 3 ]
+"13
+[v sprintf@f f `S1697  1 a 5 15 ]
+"12
+[v sprintf@ap ap `[1]*.4v  1 a 1 14 ]
+"9
+[v sprintf@s s `*.5uc  1 a 1 wreg ]
+[v sprintf@fmt fmt `*.25DCuc  1 p 2 3 ]
+"15
+[v sprintf@s s `*.5uc  1 a 1 20 ]
+"23
+} 0
+"1390 /Applications/microchip/xc8/v2.31/pic/sources/c99/common/doprnt.c
+[v _vfprintf vfprintf `(i  1 e 2 0 ]
+{
+[s S1723 _IO_FILE 0 ]
+[v vfprintf@fp fp `*.4S1723  1 a 1 wreg ]
+"1393
+[v vfprintf@cfmt cfmt `*.25uc  1 a 2 1 ]
+"1390
+[v vfprintf@fp fp `*.4S1723  1 a 1 wreg ]
+[v vfprintf@fmt fmt `*.25DCuc  1 p 2 75 ]
+[v vfprintf@ap ap `*.4*.4v  1 p 1 77 ]
+"1395
+"1390
+[v vfprintf@fp fp `*.4S1723  1 a 1 0 ]
+"1404
+} 0
+"692
+[v _vfpfcnvrt vfpfcnvrt `(i  1 s 2 vfpfcnvrt ]
+{
+[s S1723 _IO_FILE 0 ]
+[v vfpfcnvrt@fp fp `*.4S1723  1 a 1 wreg ]
+"696
+[v vfpfcnvrt@ll ll `o  1 a 8 64 ]
+"692
+[v vfpfcnvrt@fp fp `*.4S1723  1 a 1 wreg ]
+[v vfpfcnvrt@fmt fmt `*.4*.25uc  1 p 1 56 ]
+[v vfpfcnvrt@ap ap `*.4*.4v  1 p 1 57 ]
+"702
+"692
+[v vfpfcnvrt@fp fp `*.4S1723  1 a 1 74 ]
+"1387
+} 0
+"287
+[v _dtoa dtoa `(i  1 s 2 dtoa ]
+{
+[s S1723 _IO_FILE 0 ]
+[v dtoa@fp fp `*.4S1723  1 a 1 wreg ]
+"290
+[v dtoa@n n `o  1 a 8 46 ]
+"289
+[v dtoa@i i `i  1 a 2 54 ]
+[v dtoa@s s `i  1 a 2 44 ]
+[v dtoa@w w `i  1 a 2 42 ]
+[v dtoa@p p `i  1 a 2 40 ]
+"287
+[v dtoa@fp fp `*.4S1723  1 a 1 wreg ]
+[v dtoa@d d `o  1 p 8 26 ]
+"293
+"287
+[v dtoa@fp fp `*.4S1723  1 a 1 37 ]
+"328
+} 0
+"72
+[v _pad pad `(i  1 s 2 pad ]
+{
+[s S1723 _IO_FILE 0 ]
+[v pad@fp fp `*.4S1723  1 a 1 wreg ]
+"74
+[v pad@w w `i  1 a 2 21 ]
+[v pad@i i `i  1 a 2 19 ]
+"72
+[v pad@fp fp `*.4S1723  1 a 1 wreg ]
+[v pad@buf buf `*.5uc  1 p 1 15 ]
+[v pad@p p `i  1 p 2 16 ]
+"77
+"72
+[v pad@fp fp `*.4S1723  1 a 1 23 ]
+"95
+} 0
+"5 /Applications/microchip/xc8/v2.31/pic/sources/c99/common/strlen.c
+[v _strlen strlen `(ui  1 e 2 0 ]
+{
+[v strlen@s s `*.5DCuc  1 a 1 wreg ]
+"7
+[v strlen@a a `*.5DCuc  1 a 1 1 ]
+"5
+[v strlen@s s `*.5DCuc  1 a 1 wreg ]
+"7
+[v strlen@s s `*.5DCuc  1 a 1 2 ]
+"12
+} 0
+"8 /Applications/microchip/xc8/v2.31/pic/sources/c99/common/nf_fputs.c
+[v _fputs fputs `(i  1 e 2 0 ]
+{
+[v fputs@s s `*.5DCuc  1 a 1 wreg ]
+"11
+[v fputs@i i `i  1 a 2 12 ]
+"10
+[v fputs@c c `uc  1 a 1 11 ]
+"8
+[v fputs@s s `*.5DCuc  1 a 1 wreg ]
+[s S1697 _IO_FILE 5 `*.5uc 1 buffer 1 0 `i 1 count 2 1 `i 1 limit 2 3 ]
+[v fputs@fp fp `*.4S1697  1 p 1 4 ]
+"13
+[v fputs@s s `*.5DCuc  1 a 1 14 ]
+"19
+} 0
+"8 /Applications/microchip/xc8/v2.31/pic/sources/c99/common/nf_fputc.c
+[v _fputc fputc `(i  1 e 2 0 ]
+{
+[v fputc@c c `i  1 p 2 0 ]
+[s S1697 _IO_FILE 5 `*.5uc 1 buffer 1 0 `i 1 count 2 1 `i 1 limit 2 3 ]
+[v fputc@fp fp `*.4S1697  1 p 1 2 ]
+"24
+} 0
+"7 /Applications/microchip/xc8/v2.31/pic/sources/c99/common/putch.c
+[v _putch putch `(v  1 e 1 0 ]
+{
+"9
+} 0
+"1 /Applications/microchip/xc8/v2.31/pic/sources/c99/common/abs.c
+[v _abs abs `(i  1 e 2 0 ]
+{
+[v abs@a a `i  1 p 2 18 ]
+"4
+} 0
+"7 /Applications/microchip/xc8/v2.31/pic/sources/c99/common/aomod.c
+[v ___aomod __aomod `(o  1 e 8 0 ]
+{
+"12
+[v ___aomod@sign sign `uc  1 a 1 17 ]
+[v ___aomod@counter counter `uc  1 a 1 16 ]
+"7
+[v ___aomod@divisor divisor `o  1 p 8 0 ]
+[v ___aomod@dividend dividend `o  1 p 8 8 ]
+"36
+} 0
+"7 /Applications/microchip/xc8/v2.31/pic/sources/c99/common/aodiv.c
+[v ___aodiv __aodiv `(o  1 e 8 0 ]
+{
+"12
+[v ___aodiv@quotient quotient `o  1 a 8 18 ]
+"13
+[v ___aodiv@sign sign `uc  1 a 1 17 ]
+[v ___aodiv@counter counter `uc  1 a 1 16 ]
+"7
+[v ___aodiv@divisor divisor `o  1 p 8 0 ]
+[v ___aodiv@dividend dividend `o  1 p 8 8 ]
+"43
+} 0
+"4 /Applications/microchip/xc8/v2.31/pic/sources/c99/common/atoi.c
+[v _atoi atoi `(i  1 e 2 0 ]
+{
+"6
+[v atoi@n n `i  1 a 2 17 ]
+[v atoi@neg neg `i  1 a 2 10 ]
+"4
+[v atoi@s s `*.25DCuc  1 p 2 4 ]
+"16
+} 0
+"5 /Applications/microchip/xc8/v2.31/pic/sources/c99/common/isspace.c
+[v _isspace isspace `(i  1 e 2 0 ]
+{
+[v isspace@c c `i  1 p 2 4 ]
+"8
+} 0
+"5 /Applications/microchip/xc8/v2.31/pic/sources/c99/common/isdigit.c
+[v _isdigit isdigit `(i  1 e 2 0 ]
+{
+[v isdigit@c c `i  1 p 2 4 ]
+"8
+} 0
+"209 /Users/juergenmueller/OneDrive/Elektronik/rtSolder/rtSolder.X/main.c
+[v _get_switch_state get_switch_state `(uc  1 e 1 0 ]
+{
+"216
+[v get_switch_state@switch_state switch_state `uc  1 a 1 5 ]
+"211
+[v get_switch_state@sw1 sw1 `uc  1 s 1 sw1 ]
+[v get_switch_state@sw2 sw2 `uc  1 s 1 sw2 ]
+[v get_switch_state@sw1_alt sw1_alt `uc  1 s 1 sw1_alt ]
+[v get_switch_state@sw2_alt sw2_alt `uc  1 s 1 sw2_alt ]
+"212
+[v get_switch_state@sw1_cnt sw1_cnt `uc  1 s 1 sw1_cnt ]
+[v get_switch_state@sw2_cnt sw2_cnt `uc  1 s 1 sw2_cnt ]
+"213
+[v get_switch_state@sw1_long_done sw1_long_done `uc  1 s 1 sw1_long_done ]
+[v get_switch_state@sw2_long_done sw2_long_done `uc  1 s 1 sw2_long_done ]
+"214
+[v get_switch_state@counter_switch counter_switch `uc  1 s 1 counter_switch ]
+"215
+[v get_switch_state@init_switch init_switch `uc  1 s 1 init_switch ]
+"251
+} 0
+"244 /Users/juergenmueller/OneDrive/Elektronik/rtSolder/rtSolder.X/OLED/lcd.c
+[v _fb_show fb_show `(v  1 e 1 0 ]
+{
+"247
+} 0
+"112
+[v _lcd_sendFramebuffer lcd_sendFramebuffer `(v  1 e 1 0 ]
+{
+"132
+[v lcd_sendFramebuffer@packet_byte packet_byte `uc  1 a 1 9 ]
+"126
+[v lcd_sendFramebuffer@packet packet `uc  1 a 1 8 ]
+"112
+[v lcd_sendFramebuffer@buffer buffer `*.39uc  1 p 2 0 ]
+"139
+} 0
+"318
+[v _fb_draw_string_big fb_draw_string_big `(v  1 e 1 0 ]
+{
+"320
+[v fb_draw_string_big@k k `uc  1 a 1 31 ]
+"318
+[v fb_draw_string_big@x x `us  1 p 2 4 ]
+[v fb_draw_string_big@y y `us  1 p 2 6 ]
+[v fb_draw_string_big@pS pS `*.26DCuc  1 p 2 8 ]
+"335
+} 0
+"280
+[v _fb_draw_char_super_big fb_draw_char_super_big `(v  1 e 1 0 ]
+{
+"281
+[v fb_draw_char_super_big@k k `uc  1 a 1 29 ]
+"280
+[v fb_draw_char_super_big@x_offset_px x_offset_px `us  1 p 2 4 ]
+[v fb_draw_char_super_big@y_offset_page y_offset_page `us  1 p 2 6 ]
+[v fb_draw_char_super_big@fIndex fIndex `us  1 p 2 8 ]
+"289
+} 0
+"15 /Applications/microchip/xc8/v2.31/pic/sources/c99/common/Umul16.c
+[v ___wmul __wmul `(ui  1 e 2 0 ]
+{
+"17
+[v ___wmul@product product `ui  1 a 2 4 ]
+"15
+[v ___wmul@multiplier multiplier `ui  1 p 2 0 ]
+[v ___wmul@multiplicand multiplicand `ui  1 p 2 2 ]
+"53
+} 0
+"223 /Users/juergenmueller/OneDrive/Elektronik/rtSolder/rtSolder.X/OLED/lcd.c
+[v _fb_clear fb_clear `(v  1 e 1 0 ]
+{
+"225
+[v fb_clear@buffer_location buffer_location `us  1 a 2 0 ]
+"229
+} 0
+"187 /Users/juergenmueller/OneDrive/Elektronik/rtSolder/rtSolder.X/mcc_generated_files/memory.c
+[v _DATAEE_WriteByte DATAEE_WriteByte `(v  1 e 1 0 ]
+{
+[v DATAEE_WriteByte@bAdd bAdd `uc  1 a 1 wreg ]
+"189
+[v DATAEE_WriteByte@GIEBitValue GIEBitValue `uc  1 a 1 1 ]
+"187
+[v DATAEE_WriteByte@bAdd bAdd `uc  1 a 1 wreg ]
+[v DATAEE_WriteByte@bData bData `uc  1 p 1 4 ]
+[v DATAEE_WriteByte@bAdd bAdd `uc  1 a 1 0 ]
+"209
+} 0
+"128 /Users/juergenmueller/OneDrive/Elektronik/rtSolder/rtSolder.X/main.c
+[v _init_system init_system `(v  1 e 1 0 ]
+{
+"155
+} 0
+"21 /Users/juergenmueller/OneDrive/Elektronik/rtSolder/rtSolder.X/OLED/lcd.c
+[v _lcd_init lcd_init `(v  1 e 1 0 ]
+{
+"75
+} 0
+"81
+[v _lcd_sendCommand lcd_sendCommand `(v  1 e 1 0 ]
+{
+[v lcd_sendCommand@command command `uc  1 a 1 wreg ]
+[v lcd_sendCommand@command command `uc  1 a 1 wreg ]
+"83
+[v lcd_sendCommand@command command `uc  1 a 1 5 ]
+"90
+} 0
+"60 /Users/juergenmueller/OneDrive/Elektronik/rtSolder/rtSolder.X/OLED/i2c1.c
+[v _stopI2C stopI2C `(v  1 e 1 0 ]
+{
+"65
+} 0
+"46
+[v _startI2C startI2C `(v  1 e 1 0 ]
+{
+"51
+} 0
+"69
+[v _sendI2C sendI2C `(uc  1 e 1 0 ]
+{
+[v sendI2C@byte byte `uc  1 a 1 wreg ]
+[v sendI2C@byte byte `uc  1 a 1 wreg ]
+"71
+[v sendI2C@byte byte `uc  1 a 1 4 ]
+"77
+} 0
+"32
+[v _waitI2C waitI2C `(v  1 e 1 0 ]
+{
+"36
+} 0
+"40
+[v _idleI2C idleI2C `(v  1 e 1 0 ]
+{
+"44
+} 0
+"17
+[v _initI2C initI2C `(v  1 e 1 0 ]
+{
+"30
+} 0
+"211 /Users/juergenmueller/OneDrive/Elektronik/rtSolder/rtSolder.X/mcc_generated_files/memory.c
+[v _DATAEE_ReadByte DATAEE_ReadByte `(uc  1 e 1 0 ]
+{
+[v DATAEE_ReadByte@bAdd bAdd `uc  1 a 1 wreg ]
+[v DATAEE_ReadByte@bAdd bAdd `uc  1 a 1 wreg ]
+"213
+[v DATAEE_ReadByte@bAdd bAdd `uc  1 a 1 4 ]
+"221
+} 0
+"93 /Users/juergenmueller/OneDrive/Elektronik/rtSolder/rtSolder.X/mcc_generated_files/tmr1.c
+[v _TMR1_StartTimer TMR1_StartTimer `(v  1 e 1 0 ]
+{
+"97
+} 0
+"50 /Users/juergenmueller/OneDrive/Elektronik/rtSolder/rtSolder.X/mcc_generated_files/mcc.c
+[v _SYSTEM_Initialize SYSTEM_Initialize `(v  1 e 1 0 ]
+{
+"59
+} 0
+"77
+[v _WDT_Initialize WDT_Initialize `(v  1 e 1 0 ]
+{
+"81
+} 0
+"64 /Users/juergenmueller/OneDrive/Elektronik/rtSolder/rtSolder.X/mcc_generated_files/tmr1.c
+[v _TMR1_Initialize TMR1_Initialize `(v  1 e 1 0 ]
+{
+"91
+} 0
+"171
+[v _TMR1_SetInterruptHandler TMR1_SetInterruptHandler `(v  1 e 1 0 ]
+{
+[v TMR1_SetInterruptHandler@InterruptHandler InterruptHandler `*.37(v  1 p 2 4 ]
+"173
+} 0
+"57 /Users/juergenmueller/OneDrive/Elektronik/rtSolder/rtSolder.X/mcc_generated_files/pin_manager.c
+[v _PIN_MANAGER_Initialize PIN_MANAGER_Initialize `(v  1 e 1 0 ]
+{
+"126
+} 0
+"155
+[v _IOCAF0_SetInterruptHandler IOCAF0_SetInterruptHandler `(v  1 e 1 0 ]
+{
+[v IOCAF0_SetInterruptHandler@InterruptHandler InterruptHandler `*.37(v  1 p 2 4 ]
+"157
+} 0
+"61 /Users/juergenmueller/OneDrive/Elektronik/rtSolder/rtSolder.X/mcc_generated_files/mcc.c
+[v _OSCILLATOR_Initialize OSCILLATOR_Initialize `(v  1 e 1 0 ]
+{
+"75
+} 0
+"58 /Users/juergenmueller/OneDrive/Elektronik/rtSolder/rtSolder.X/mcc_generated_files/fvr.c
+[v _FVR_Initialize FVR_Initialize `(v  1 e 1 0 ]
+{
+"62
+} 0
+"70 /Users/juergenmueller/OneDrive/Elektronik/rtSolder/rtSolder.X/mcc_generated_files/adc.c
+[v _ADC_Initialize ADC_Initialize `(v  1 e 1 0 ]
+{
+"93
+} 0
+"52 /Users/juergenmueller/OneDrive/Elektronik/rtSolder/rtSolder.X/mcc_generated_files/interrupt_manager.c
+[v _INTERRUPT_InterruptManager INTERRUPT_InterruptManager `II(v  1 e 1 0 ]
+{
+"74
+} 0
+"157 /Users/juergenmueller/OneDrive/Elektronik/rtSolder/rtSolder.X/mcc_generated_files/tmr1.c
+[v _TMR1_ISR TMR1_ISR `(v  1 e 1 0 ]
+{
+"168
+} 0
+"175
+[v _TMR1_DefaultInterruptHandler TMR1_DefaultInterruptHandler `(v  1 e 1 0 ]
+{
+"178
+} 0
+"124 /Users/juergenmueller/OneDrive/Elektronik/rtSolder/rtSolder.X/main.c
+[v _timer1_fired timer1_fired `(v  1 e 1 0 ]
+{
+"126
+} 0
+"120 /Users/juergenmueller/OneDrive/Elektronik/rtSolder/rtSolder.X/mcc_generated_files/tmr1.c
+[v _TMR1_WriteTimer TMR1_WriteTimer `(v  1 e 1 0 ]
+{
+[v TMR1_WriteTimer@timerVal timerVal `us  1 p 2 0 ]
+"140
+} 0
+"150 /Users/juergenmueller/OneDrive/Elektronik/rtSolder/rtSolder.X/mcc_generated_files/adc.c
+[v _ADC_ISR ADC_ISR `(v  1 e 1 0 ]
+{
+"180
+} 0
+"95
+[v i1_ADC_StartConversion ADC_StartConversion `(v  1 e 1 0 ]
+{
+[v i1ADC_StartConversion@channel channel `E5669  1 a 1 wreg ]
+[v i1ADC_StartConversion@channel channel `E5669  1 a 1 wreg ]
+"98
+[v i1ADC_StartConversion@channel channel `E5669  1 a 1 1 ]
+"108
+} 0
+"116
+[v _ADC_GetConversionResult ADC_GetConversionResult `(us  1 e 2 0 ]
+{
+"120
+} 0
