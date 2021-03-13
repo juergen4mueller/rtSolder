@@ -340,11 +340,11 @@ void proc_menue(void){
                     if(switch_state == sw1_long){
                         // Setup Auto off time
                         fb_clear();
-                        if(EE_AutoOff == Auto_off_disabled){sprintf(text_out,"off: never");}
-                        else if(EE_AutoOff == Auto_off_5_min){sprintf(text_out,"off: 5 min");}
-                        else if(EE_AutoOff == Auto_off_10_min){sprintf(text_out,"off: 10 min");}
-                        else if(EE_AutoOff == Auto_off_10_min){sprintf(text_out,"off: 10 min");}
-                        else {sprintf(text_out,"off: 30 min");}
+                            if(EE_AutoOff == Auto_off_disabled){sprintf(text_out,"t: off");}
+                            else if(EE_AutoOff == Auto_off_5_min){sprintf(text_out,"t: 5m");}
+                            else if(EE_AutoOff == Auto_off_10_min){sprintf(text_out,"t: 10m");}
+                            else if(EE_AutoOff == Auto_off_15_min){sprintf(text_out,"t: 15m");}
+                            else {sprintf(text_out,"t: 30m");}
                         fb_draw_string_big(20, 1, text_out);
                         fb_show();
                         menue_state = 3;
@@ -385,11 +385,11 @@ void proc_menue(void){
                     else if(switch_state == sw1_short){
                         if(EE_AutoOff > Auto_off_disabled){
                             EE_AutoOff --;
-                            if(EE_AutoOff == Auto_off_disabled){sprintf(text_out,"off: never");}
-                            else if(EE_AutoOff == Auto_off_5_min){sprintf(text_out,"off: 5 min");}
-                            else if(EE_AutoOff == Auto_off_10_min){sprintf(text_out,"off: 10 min");}
-                            else if(EE_AutoOff == Auto_off_10_min){sprintf(text_out,"off: 10 min");}
-                            else {sprintf(text_out,"off: 30 min");}
+                            if(EE_AutoOff == Auto_off_disabled){sprintf(text_out,"t: off");}
+                            else if(EE_AutoOff == Auto_off_5_min){sprintf(text_out,"t: 5m");}
+                            else if(EE_AutoOff == Auto_off_10_min){sprintf(text_out,"t: 10m");}
+                            else if(EE_AutoOff == Auto_off_15_min){sprintf(text_out,"t: 15m");}
+                            else {sprintf(text_out,"t: 30m");}
                             fb_draw_string_big( 20, 2, text_out);
                             fb_show();
                             // Wert auf Display aktualisieren
@@ -398,11 +398,11 @@ void proc_menue(void){
                     else if(switch_state == sw2_short){
                         if(EE_AutoOff < Auto_off_15_min){
                             EE_AutoOff ++;
-                            if(EE_AutoOff == Auto_off_disabled){sprintf(text_out,"off: never");}
-                            else if(EE_AutoOff == Auto_off_5_min){sprintf(text_out,"off: 5 min");}
-                            else if(EE_AutoOff == Auto_off_10_min){sprintf(text_out,"off: 10 min");}
-                            else if(EE_AutoOff == Auto_off_10_min){sprintf(text_out,"off: 10 min");}
-                            else {sprintf(text_out,"off: 30 min");}
+                            if(EE_AutoOff == Auto_off_disabled){sprintf(text_out,"t: off");}
+                            else if(EE_AutoOff == Auto_off_5_min){sprintf(text_out,"t: 5m");}
+                            else if(EE_AutoOff == Auto_off_10_min){sprintf(text_out,"t: 10m");}
+                            else if(EE_AutoOff == Auto_off_15_min){sprintf(text_out,"t: 15m");}
+                            else {sprintf(text_out,"t: 30m");}
                             fb_draw_string_big( 20, 2, text_out);
                             fb_show();
                             // Wert auf Display aktualisieren
