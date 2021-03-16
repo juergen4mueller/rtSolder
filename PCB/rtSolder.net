@@ -1,7 +1,7 @@
 (export (version D)
   (design
-    (source /Users/juergenmueller/OneDrive/Elektronik/Lötfix_V1.1/PCB/Lötfix.sch)
-    (date "Donnerstag, 25. Februar 2021 um 19:56:19")
+    (source /Users/juergenmueller/OneDrive/Elektronik/rtSolder_/PCB/rtSolder.sch)
+    (date "Dienstag, 16. März 2021 um 20:27:13")
     (tool "Eeschema (5.1.5-0-10_14)")
     (sheet (number 1) (name /) (tstamps /)
       (title_block
@@ -9,7 +9,7 @@
         (company)
         (rev)
         (date)
-        (source Lötfix.sch)
+        (source rtSolder.sch)
         (comment (number 1) (value ""))
         (comment (number 2) (value ""))
         (comment (number 3) (value ""))
@@ -155,7 +155,7 @@
       (sheetpath (names /) (tstamps /))
       (tstamp 5F5C0366))
     (comp (ref R19)
-      (value 110R)
+      (value 150R)
       (footprint Resistor_SMD:R_0603_1608Metric)
       (datasheet ~)
       (fields
@@ -692,7 +692,7 @@
     (library (logical Regulator_Linear)
       (uri /Users/juergenmueller/Documents/KiCad/kicad-symbols-master/Regulator_Linear.lib))
     (library (logical Solder-rescue)
-      (uri /Users/juergenmueller/OneDrive/Elektronik/Lötfix_V1.1/PCB/Solder-rescue.lib))
+      (uri /Users/juergenmueller/OneDrive/Elektronik/rtSolder_/PCB/Solder-rescue.lib))
     (library (logical Switch)
       (uri /Users/juergenmueller/Documents/KiCad/kicad-symbols-master/Switch.lib))
     (library (logical Transistor_FET)
