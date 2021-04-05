@@ -51,9 +51,13 @@
   Section: Included Files
 */
 
+
+
 #include <xc.h>
 #include <stdint.h>
 #include <stdbool.h>
+
+#define AN_IN_FILTER_SIZE 4
 
 #ifdef __cplusplus  // Provide C++ Compatibility
 

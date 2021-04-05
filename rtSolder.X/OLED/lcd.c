@@ -245,11 +245,11 @@ void fb_show(void)
 {
     lcd_sendFramebuffer(buffer);
 }
-
-void fb_show_bmp(uint8_t *pBmp)
-{
-    lcd_sendFramebuffer(pBmp);
-}
+//
+//void fb_show_bmp(uint8_t *pBmp)
+//{
+//    lcd_sendFramebuffer(pBmp);
+//}
 
 /*******************************************************************************
  * Zeichnen eines Zeichens an Position (x,y) - Diese Funktion kann nur indirekt

@@ -186,9 +186,6 @@ uint16_t calc_supply_voltage(uint16_t adc_value){
     // 30,0V -> 300 als Ergebnis (2400 / 8)
     // bei 30V sollen 1,2V am ADC anliegen
     // 56kOhm zu 2,2 kOhm -> Messfehler 1,8%
-    
-    //bei 19,6V werden 18,3V angezeigt
-    // -> 
     return (adc_value >> 3);
 }
 
@@ -265,44 +262,208 @@ unsigned char get_switch_state(void){
     if(init_switch) return switch_state;
     else return 0;
 }
-
-void proc_off(void){
+unsigned int test_power_to_display;
+void proc_off(void){ // and test mode
     uint8_t switch_state = get_switch_state();
     static uint16_t counter_display_2ms;
     counter_display_2ms ++;
     
-//    switch_state = get_switch_state();
-    if(switch_state == sw1_long){        
-        // Enter Menü
-        mode = mode_menue;
-        counter_display_2ms = 0;
-    }
-    else if(switch_state == sw2_short){        
-        mode = mode_work;
-        counter_minutes = 0;
-        counter_200ms = 0;
-        counter_display_2ms = 0;
-    }
-    else if(switch_state == sw2_long){      // Hier evtl IBN einbauen   
-        mode = mode_work;
-        counter_minutes = 0;
-        counter_200ms = 0;
-        counter_display_2ms = 0;
-    }
-     if(counter_display_2ms >= 500){  
-        U_Supply = calc_supply_voltage(AN_IN_U_Supply);
-        counter_display_2ms = 0;
-        fb_clear();
-        fb_draw_char_super_big(0, 0, BIG_CHAR_SETUP); // Setup-Symbol links
-        fb_draw_char_super_big(40, 1, BIG_CHAR_O); // 'O'
-        fb_draw_char_super_big(55, 1, BIG_CHAR_F); // 'F'
-        fb_draw_char_super_big(70, 1, BIG_CHAR_F); // 'F'
-        fb_draw_char_super_big(112, 0, BIG_CHAR_ON_OFF); // ON-OFF-Symbol rechts           
-        sprintf(text_out, "%2dW/%2d,%1dV", EE_soll_Power * 10, U_Supply/10, U_Supply%10);
-        fb_draw_string(40, 0, text_out);
-        fb_show();
-        ADC_StartConversion(AN2_Temp_Tip);
+    if (switch_state == sw1_short) {
+        if(testmode == 0){
+            counter_left++;
         }
+        else{
+            testmode = 0;
+            counter_display_2ms = 0;
+        }
+    }
+    if(switch_state == sw1_long){    
+        if(testmode == 0){
+            // Enter Menu
+            counter_left = 0;
+            mode = mode_menue;
+            counter_display_2ms = 0;
+        }
+        else{
+            testmode = 0;
+            counter_display_2ms = 0;
+        }
+    }
+    else if(switch_state == sw2_short){   
+        if(testmode != 0){
+            state_test ++;
+        }
+        else{
+            mode = mode_work;
+            counter_left = 0;
+            counter_minutes = 0;
+            counter_200ms = 0;
+            counter_display_2ms = 0;
+        }
+    }
+    else if(switch_state == sw2_long){ 
+        if(counter_left == 4){
+            if(testmode != 0){
+                testmode = 0;
+            }
+            else{
+                testmode = 1;
+                counter_200ms = 0;
+                state_test = 0;
+            }
+        }
+        else{
+            mode = mode_work;
+            counter_minutes = 0;
+            counter_200ms = 0;
+            counter_display_2ms = 0;
+        }
+        counter_left = 0;
+    }
+    
+    if(testmode==1){
+        // <editor-fold defaultstate="collapsed" desc="Testbetrieb">
+        counter2ms_solder ++;
+        if(counter2ms_solder == 4){
+            ADC_StartConversion(AN2_Temp_Tip);
+        }
+        if(counter2ms_solder == 6){
+            if(counter_200ms >= 200){
+                state_test = 9; // Test automatisch nach 40 Sekunden beenden
+            }
+            switch(state_test){
+                case 0:
+                    test_power_to_display = 0;
+                    TIP_SUPPLY_EN_SetLow();
+                    TIP_PS1_SetLow();
+                    TIP_PS1_SetDigitalInput();
+                    TIP_PS2_SetLow();
+                    TIP_PS2_SetDigitalInput();
+                    break;
+                case 1: // 10 Watt
+                    test_power_to_display = 10;
+                    TIP_SUPPLY_EN_SetHigh();
+                    TIP_PS1_SetLow();
+                    TIP_PS1_SetDigitalInput();
+                    TIP_PS2_SetLow();
+                    TIP_PS2_SetDigitalInput();
+                    break;
+                case 2: //Off
+                    test_power_to_display = 0;
+                    TIP_SUPPLY_EN_SetLow();
+                    TIP_PS1_SetLow();
+                    TIP_PS1_SetDigitalInput();
+                    TIP_PS2_SetLow();
+                    TIP_PS2_SetDigitalInput();
+                    break;
+                case 3: // 20 Watt
+                    test_power_to_display = 20;
+                    TIP_SUPPLY_EN_SetHigh();
+                    TIP_PS1_SetLow();
+                    TIP_PS1_SetDigitalInput();
+                    TIP_PS2_SetLow();
+                    TIP_PS2_SetDigitalOutput();
+                    break;
+                case 4: // Off
+                    test_power_to_display = 0;
+                    TIP_SUPPLY_EN_SetLow();
+                    TIP_PS1_SetLow();
+                    TIP_PS1_SetDigitalInput();
+                    TIP_PS2_SetLow();
+                    TIP_PS2_SetDigitalInput();
+                    break;
+                case 5: // 30 Watt
+                    test_power_to_display = 30;
+                    TIP_SUPPLY_EN_SetHigh();
+                    TIP_PS1_SetLow();
+                    TIP_PS1_SetDigitalOutput();
+                    TIP_PS2_SetLow();
+                    TIP_PS2_SetDigitalInput();
+                    break;
+                case 6: // Off
+                    test_power_to_display = 0;
+                    TIP_SUPPLY_EN_SetLow();
+                    TIP_PS1_SetLow();
+                    TIP_PS1_SetDigitalInput();
+                    TIP_PS2_SetLow();
+                    TIP_PS2_SetDigitalInput();
+                    break;
+                case 7: // 40 Watt 
+                    test_power_to_display = 40;
+                    TIP_SUPPLY_EN_SetHigh();
+                    TIP_PS1_SetLow();
+                    TIP_PS1_SetDigitalOutput();
+                    TIP_PS2_SetLow();
+                    TIP_PS2_SetDigitalOutput();
+                    break;
+                case 8: // Off
+                    test_power_to_display = 0;
+                    TIP_SUPPLY_EN_SetLow();
+                    TIP_PS1_SetLow();
+                    TIP_PS1_SetDigitalInput();
+                    TIP_PS2_SetLow();
+                    TIP_PS2_SetDigitalInput();
+                    break;
+                case 9:
+                    TIP_SUPPLY_EN_SetLow();
+                    testmode = 0;
+                    state_test = 0;
+                    break;
+                default:
+                    test_power_to_display = 0;
+                    TIP_PS1_SetLow();
+                    TIP_PS1_SetDigitalInput();
+                    TIP_PS2_SetLow();
+                    TIP_PS2_SetDigitalInput();
+                    break;
+            }
+        }
+        if(counter2ms_solder >= 100){
+            counter2ms_solder = 0;
+            counter_200ms ++;
+            TIP_SUPPLY_EN_SetLow();
+            Temperatur_TIP = calc_tip_temperatur(AN_IN_Temp);
+            U_Supply = calc_supply_voltage(AN_IN_U_Supply);
+            fb_clear();
+            //gemessene Versorgungsspannung
+            sprintf(text_out, "%2d.%dV", (U_Supply / 10), U_Supply % 10);
+            fb_draw_string_big(0, 0, text_out);
+            // eingestellte Leistung
+            sprintf(text_out, "%2dW", test_power_to_display);
+            fb_draw_string_big(64, 0, text_out);
+            // solder breaks
+            sprintf(text_out, "Test");
+            fb_draw_string_big(0, 2, text_out);
+
+            // Ist-Temperatur
+            if (Temperatur_TIP < 500) {
+                sprintf(text_out, "%3dC", Temperatur_TIP);
+            } else {
+                sprintf(text_out, "TIP!");
+            }
+            fb_draw_string_big(64, 2, text_out);
+
+            fb_show();             
+            // </editor-fold>
+        }
+    }
+    else{
+        TIP_SUPPLY_EN_SetLow();
+        if(counter_display_2ms >= 500){  
+            U_Supply = calc_supply_voltage(AN_IN_U_Supply);
+            counter_display_2ms = 0;
+            fb_clear();
+            fb_draw_char_super_big(0, 0, BIG_CHAR_SETUP); // Setup-Symbol links
+            fb_draw_char_super_big(40, 1, BIG_CHAR_O); // 'O'
+            fb_draw_char_super_big(55, 1, BIG_CHAR_F); // 'F'
+            fb_draw_char_super_big(70, 1, BIG_CHAR_F); // 'F'
+            fb_draw_char_super_big(112, 0, BIG_CHAR_ON_OFF); // ON-OFF-Symbol rechts           
+            sprintf(text_out, "%2dW/%2d,%1dV", EE_soll_Power * 10, U_Supply/10, U_Supply%10);
+            fb_draw_string(40, 0, text_out);
+            fb_show();
+            ADC_StartConversion(AN2_Temp_Tip);
+        }
+    }
 }
 
 void proc_menue(void){
@@ -459,323 +620,219 @@ void proc_solder(void){
 
     uint8_t switch_State = get_switch_state();
     if (switch_State == sw1_short) {
-        counter_left++;
-        counter_right = 0;
+        counter_200ms = 0;
         if (TEMP_SOLL > 150)
             TEMP_SOLL-=10;
     }
     if (switch_State == sw1_long) {
-        if((counter_left == 4)&&(counter_right == 2)){
-            if (solder_display_mode != solder_display_dev) {
-                solder_display_mode = solder_display_dev;
-            } else {
-                solder_display_mode = solder_display_normal;
-            }
-        }
-        if((counter_left == 4)&&(counter_right == 4)){
-            if(testmode != 0){
-                testmode = 0;
-            }
-            else{
-                testmode = 1;
-                state_test = 0;
-            }
-        }
-        counter_left = counter_right = 0;
+//        if (solder_display_mode == solder_display_dev){
+//            solder_display_mode = solder_display_normal;
+//        }
+//        else{
+//            solder_display_mode = solder_display_dev;
+//        }
     }
     if (switch_State == sw2_short) {
-        counter_right ++;
-        if(testmode == 0){
-            if (TEMP_SOLL < 450)
-                TEMP_SOLL+=10;
-            }
-        else{
-            state_test ++;
-        }
+        counter_200ms = 0;
+        if (TEMP_SOLL < 450)
+            TEMP_SOLL+=10;
     }
     if (switch_State == sw2_long) {
         mode = mode_off;
     }// </editor-fold>
 
-    if(testmode==1){
-        // <editor-fold defaultstate="collapsed" desc="Testbetrieb">
-        counter2ms_solder ++;       
-        if(counter2ms_solder == 4){
-            ADC_StartConversion(AN2_Temp_Tip);
-        }
-        if(counter2ms_solder == 6){
-            switch(state_test){
-                case 0:
-                    TIP_SUPPLY_EN_SetLow();
-                    TIP_PS1_SetLow();
-                    TIP_PS1_SetDigitalInput();
-                    TIP_PS2_SetLow();
-                    TIP_PS2_SetDigitalInput();
-                    break;
-                case 1: // 10 Watt
-                    TIP_SUPPLY_EN_SetHigh();
-                    TIP_PS1_SetLow();
-                    TIP_PS1_SetDigitalInput();
-                    TIP_PS2_SetLow();
-                    TIP_PS2_SetDigitalInput();
-                    break;
-                case 2:
-                    TIP_SUPPLY_EN_SetHigh();
-                    TIP_PS1_SetLow();
-                    TIP_PS1_SetDigitalInput();
-                    TIP_PS2_SetLow();
-                    TIP_PS2_SetDigitalOutput();
-                    break;
-                case 3:
-                    TIP_SUPPLY_EN_SetHigh();
-                    TIP_PS1_SetLow();
-                    TIP_PS1_SetDigitalOutput();
-                    TIP_PS2_SetLow();
-                    TIP_PS2_SetDigitalInput();
-                    break;
-                case 4:
-                    TIP_SUPPLY_EN_SetHigh();
-                    TIP_PS1_SetLow();
-                    TIP_PS1_SetDigitalOutput();
-                    TIP_PS2_SetLow();
-                    TIP_PS2_SetDigitalOutput();
-                    break;
-                case 5:
-                    TIP_SUPPLY_EN_SetLow();
-                    testmode = 0;
-                    state_test = 0;
-                    break;
-                default:
-                    TIP_PS1_SetLow();
-                    TIP_PS1_SetDigitalInput();
-                    TIP_PS2_SetLow();
-                    TIP_PS2_SetDigitalInput();
-                    break;
-            }
-        }
-        if(counter2ms_solder >= 50){
-            counter2ms_solder = 0;
-            TIP_SUPPLY_EN_SetLow();
-            Temperatur_TIP = calc_tip_temperatur(AN_IN_Temp);
-            U_Supply = calc_supply_voltage(AN_IN_U_Supply);
-            fb_clear();
-            //gemessene Versorgungsspannung
-            sprintf(text_out, "%2d.%dV", (U_Supply / 10), U_Supply % 10);
-            fb_draw_string_big(0, 0, text_out);
-            // eingestellte Leistung
-            sprintf(text_out, "%2dW", state_test * 10);
-            fb_draw_string_big(64, 0, text_out);
-            // solder breaks
-            sprintf(text_out, "Test");
-            fb_draw_string_big(0, 2, text_out);
+    // <editor-fold defaultstate="collapsed" desc="Normaler Betrieb">
 
-            // Ist-Temperatur
-            if (Temperatur_TIP < 500) {
-                sprintf(text_out, "%3dC", Temperatur_TIP);
-            } else {
-                sprintf(text_out, "TIP!");
-            }
-            fb_draw_string_big(64, 2, text_out);
+counter2ms_solder++;
+if (counter2ms_solder == 4) { // 4ms nach dem Abschalten den ADC starten
+    ADC_StartConversion(AN2_Temp_Tip);
+}
+if (counter2ms_solder == 6) {
+    // <editor-fold defaultstate="collapsed" desc="Temperatur berechnen und Leistung einstellen">
 
-            fb_show();             
-            // </editor-fold>
-        }
-        // </editor-fold>
+    Temperatur_TIP = calc_tip_temperatur(AN_IN_Temp);
+    Temp_Anz_Filter[Temp_Anz_pos++] = Temperatur_TIP;
+    if (Temp_Anz_pos >= 8) {
+        Temp_Anz_pos = 0;
     }
-    else{
-        // <editor-fold defaultstate="collapsed" desc="Normaler Betrieb">
-
-    counter2ms_solder++;
-    if (counter2ms_solder == 3) { // 4ms nach dem Abschalten den ADC starten
-        ADC_StartConversion(AN2_Temp_Tip);
+    Temperatur_Anzeige = 0;
+    for (x = 0; x < 8; x++) {
+        Temperatur_Anzeige += Temp_Anz_Filter[x];
     }
-    if (counter2ms_solder == 4) {
-        // <editor-fold defaultstate="collapsed" desc="Temperatur berechnen und Leistung einstellen">
+    Temperatur_Anzeige = Temperatur_TIP; //(Temperatur_Anzeige>>3);
 
-        Temperatur_TIP = calc_tip_temperatur(AN_IN_Temp);
-        Temp_Anz_Filter[Temp_Anz_pos++] = Temperatur_TIP;
-        if (Temp_Anz_pos >= 8) {
-            Temp_Anz_pos = 0;
-        }
-        Temperatur_Anzeige = 0;
-        for (x = 0; x < 8; x++) {
-            Temperatur_Anzeige += Temp_Anz_Filter[x];
-        }
-        Temperatur_Anzeige = Temperatur_TIP; //(Temperatur_Anzeige>>3);
+    switch (EE_soll_Power) {
+        case 1: // 10 Watt
+            TIP_PS1_SetLow();
+            TIP_PS1_SetDigitalInput();
+            TIP_PS2_SetLow();
+            TIP_PS2_SetDigitalInput();
+            break;
+        case 2: // 20 Watt
+            TIP_PS1_SetLow();
+            TIP_PS1_SetDigitalInput();
+            TIP_PS2_SetLow();
+            TIP_PS2_SetDigitalOutput();
+            break;
+        case 3: // 30 Watt
+            TIP_PS1_SetLow();
+            TIP_PS1_SetDigitalOutput();
+            TIP_PS2_SetLow();
+            TIP_PS2_SetDigitalInput();
+            break;
+        case 4: // 40 Watt
+            TIP_PS1_SetLow();
+            TIP_PS1_SetDigitalOutput();
+            TIP_PS2_SetLow();
+            TIP_PS2_SetDigitalOutput();
+            break;
+        default:
+            TIP_PS1_SetLow();
+            TIP_PS1_SetDigitalInput();
+            TIP_PS2_SetLow();
+            TIP_PS2_SetDigitalInput();
+            break;
+    }
+    // Wenn die Temperatur zu klein ist heizen
+    if (Temperatur_TIP < TEMP_SOLL) {
+        TIP_SUPPLY_EN_SetHigh();
+        solder_break_out = counter_solder_break;
+        counter_solder_break = 0;
+    } else {
+        TIP_SUPPLY_EN_SetLow();
+    }
+    counter_solder_break++;
+    time_counter++;
+    // </editor-fold>
+}
 
-        switch (EE_soll_Power) {
-            case 1: // 10 Watt
-                TIP_PS1_SetLow();
-                TIP_PS1_SetDigitalInput();
-                TIP_PS2_SetLow();
-                TIP_PS2_SetDigitalInput();
+if (counter2ms_solder >= 100) { // alle 200ms messen und das Display aktualisieren
+    counter2ms_solder = 0;
+    counter_200ms++;
+    if (counter_200ms >= 300) {
+        counter_200ms = 0;
+        counter_minutes++;
+        switch (EE_AutoOff) {
+            case Auto_off_disabled:
+                counter_minutes = 0;
                 break;
-            case 2:
-                TIP_PS1_SetLow();
-                TIP_PS1_SetDigitalInput();
-                TIP_PS2_SetLow();
-                TIP_PS2_SetDigitalOutput();
+            case Auto_off_2_min:
+                if (counter_minutes >= 2) {
+                    mode = mode_off;
+                    counter_minutes = 0;
+                }
                 break;
-            case 3:
-                TIP_PS1_SetLow();
-                TIP_PS1_SetDigitalOutput();
-                TIP_PS2_SetLow();
-                TIP_PS2_SetDigitalInput();
+            case Auto_off_5_min:
+                if (counter_minutes >= 5) {
+                    mode = mode_off;
+                    counter_minutes = 0;
+                }
                 break;
-            case 4:
-                TIP_PS1_SetLow();
-                TIP_PS1_SetDigitalOutput();
-                TIP_PS2_SetLow();
-                TIP_PS2_SetDigitalOutput();
+            case Auto_off_10_min:
+                if (counter_minutes >= 10) {
+                    mode = mode_off;
+                    counter_minutes = 0;
+                }
+                break;
+            case Auto_off_15_min:
+                if (counter_minutes >= 15) {
+                    mode = mode_off;
+                    counter_minutes = 0;
+                }
                 break;
             default:
-                TIP_PS1_SetLow();
-                TIP_PS1_SetDigitalInput();
-                TIP_PS2_SetLow();
-                TIP_PS2_SetDigitalInput();
+                if (counter_minutes >= 30) {
+                    mode = mode_off;
+                    counter_minutes = 0;
+                }
                 break;
         }
-        // Wenn die Temperatur zu klein ist heizen
-        if (Temperatur_TIP < TEMP_SOLL) {
-            TIP_SUPPLY_EN_SetHigh();
-            solder_break_out = counter_solder_break;
-            counter_solder_break = 0;
-        } else {
-            TIP_SUPPLY_EN_SetLow();
-        }
-        counter_solder_break++;
-        time_counter++;
-        // </editor-fold>
     }
+    counter2ms_blink++;
+    TIP_SUPPLY_EN_SetLow(); // Ausgang abschalten damit dann die Temperatur gemessen werden kann
+    U_Supply = calc_supply_voltage(AN_IN_U_Supply);
+    //        solder_display_mode = solder_display_dev;
+    if (solder_display_mode == solder_display_dev) {
+        // <editor-fold defaultstate="collapsed" desc="Display Output developer-edition">
+        // Anzeige der Relevanten Daten auf dem Display
+        fb_clear();
+        //gemessene Versorgungsspannung
+        sprintf(text_out, "%2d.%dV", (U_Supply / 10), U_Supply % 10);
+        fb_draw_string_big(0, 0, text_out);
+        // eingestellte Maximalleistung
+        sprintf(text_out, "%2dW", EE_soll_Power * 10);
+        fb_draw_string_big(64, 0, text_out);
+        // solder breaks
+        sprintf(text_out, "%3d", solder_break_out);
+        fb_draw_string_big(0, 2, text_out);
 
-    if (counter2ms_solder >= 100) { // alle 200ms messen und das Display aktualisieren
-        counter2ms_solder = 0;
-        counter_200ms++;
-        if (counter_200ms >= 300) {
-            counter_200ms = 0;
-            counter_minutes++;
-            switch (EE_AutoOff) {
-                case Auto_off_disabled:
-                    counter_minutes = 0;
-                    break;
-                case Auto_off_2_min:
-                    if (counter_minutes >= 2) {
-                        mode = mode_off;
-                        counter_minutes = 0;
-                    }
-                    break;
-                case Auto_off_5_min:
-                    if (counter_minutes >= 5) {
-                        mode = mode_off;
-                        counter_minutes = 0;
-                    }
-                    break;
-                case Auto_off_10_min:
-                    if (counter_minutes >= 10) {
-                        mode = mode_off;
-                        counter_minutes = 0;
-                    }
-                    break;
-                case Auto_off_15_min:
-                    if (counter_minutes >= 15) {
-                        mode = mode_off;
-                        counter_minutes = 0;
-                    }
-                    break;
-                default:
-                    if (counter_minutes >= 30) {
-                        mode = mode_off;
-                        counter_minutes = 0;
-                    }
-                    break;
-            }
+        // Ist-Temperatur
+        if (Temperatur_TIP < 500) {
+            sprintf(text_out, "%3dC", Temperatur_TIP);
+        } else {
+            sprintf(text_out, "TIP!");
         }
-        counter2ms_blink++;
-        TIP_SUPPLY_EN_SetLow(); // Ausgang abschalten damit dann die Temperatur gemessen werden kann
-        U_Supply = calc_supply_voltage(AN_IN_U_Supply);
-        //        solder_display_mode = solder_display_dev;
-        if (solder_display_mode == solder_display_dev) {
-            // <editor-fold defaultstate="collapsed" desc="Display Output developer-edition">
-            // Anzeige der Relevanten Daten auf dem Display
-            fb_clear();
-            //gemessene Versorgungsspannung
-            sprintf(text_out, "%2d.%dV", (U_Supply / 10), U_Supply % 10);
-            fb_draw_string_big(0, 0, text_out);
-            // eingestellte Maximalleistung
-            sprintf(text_out, "%2dW", EE_soll_Power * 10);
-            fb_draw_string_big(64, 0, text_out);
-            // solder breaks
-            sprintf(text_out, "%3d", solder_break_out);
-            fb_draw_string_big(0, 2, text_out);
+        fb_draw_string_big(64, 2, text_out);
 
-            // Ist-Temperatur
-            if (Temperatur_TIP < 500) {
-                sprintf(text_out, "%3dC", Temperatur_TIP);
+        fb_show(); // </editor-fold>
+    } else if (solder_display_mode == solder_display_normal) {
+        // <editor-fold defaultstate="collapsed" desc="Display Output normal">
+        // Anzeige der Relevanten Daten auf dem Display
+        fb_clear();
+
+        if (Temperatur_TIP > 490) {
+            fb_draw_char_super_big(0, 1, BIG_CHAR_DOWN);
+            fb_draw_char_super_big(50, 1, BIG_CHAR_T); // 'T'
+            fb_draw_char_super_big(65, 1, BIG_CHAR_I); // 'I'
+            fb_draw_char_super_big(80, 1, BIG_CHAR_P); // 'P'
+            fb_draw_char_super_big(112, 1, BIG_CHAR_UP);
+        }
+        else {
+            if (counter2ms_blink >= 15) {
+                counter2ms_blink = 0;
+            }
+            if (Temperatur_Anzeige < (TEMP_SOLL - 30)) {
+                //                    Temperatur_Anzeige = Temperatur_TIP;
+                if (counter2ms_blink < 5) {
+                    fb_draw_char_super_big(20, 1, BIG_CHAR_HEATING);
+                }
             } else {
-                sprintf(text_out, "TIP!");
+                Temperatur_Anzeige = TEMP_SOLL;
             }
-            fb_draw_string_big(64, 2, text_out);
-
-            fb_show(); // </editor-fold>
-        } else if (solder_display_mode == solder_display_normal) {
-            // <editor-fold defaultstate="collapsed" desc="Display Output normal">
-            // Anzeige der Relevanten Daten auf dem Display
-            fb_clear();
-
-            if (Temperatur_TIP > 490) {
-                fb_draw_char_super_big(0, 1, BIG_CHAR_DOWN);
-                fb_draw_char_super_big(50, 1, BIG_CHAR_T); // 'T'
-                fb_draw_char_super_big(65, 1, BIG_CHAR_I); // 'I'
-                fb_draw_char_super_big(80, 1, BIG_CHAR_P); // 'P'
-                fb_draw_char_super_big(112, 1, BIG_CHAR_UP);
-            }
-            else {
-                if (counter2ms_blink >= 15) {
-                    counter2ms_blink = 0;
-                }
-                if (Temperatur_Anzeige < (TEMP_SOLL - 30)) {
-                    //                    Temperatur_Anzeige = Temperatur_TIP;
-                    if (counter2ms_blink < 5) {
-                        fb_draw_char_super_big(20, 1, BIG_CHAR_HEATING);
-                    }
-                } else {
-                    Temperatur_Anzeige = TEMP_SOLL;
-                }
-                nh = Temperatur_Anzeige / 100;
-                nz = (Temperatur_Anzeige % 100) / 10;
-                ne = Temperatur_Anzeige % 10;
-                fb_draw_char_super_big(0, 1, BIG_CHAR_DOWN);
-                if (nh > 0) {
-                    fb_draw_char_super_big(40, 1, nh);
+            nh = Temperatur_Anzeige / 100;
+            nz = (Temperatur_Anzeige % 100) / 10;
+            ne = Temperatur_Anzeige % 10;
+            fb_draw_char_super_big(0, 1, BIG_CHAR_DOWN);
+            if (nh > 0) {
+                fb_draw_char_super_big(40, 1, nh);
+                fb_draw_char_super_big(55, 1, nz);
+                fb_draw_char_super_big(70, 1, ne);
+            } else {
+                if (nz > 0) {
                     fb_draw_char_super_big(55, 1, nz);
                     fb_draw_char_super_big(70, 1, ne);
                 } else {
-                    if (nz > 0) {
-                        fb_draw_char_super_big(55, 1, nz);
-                        fb_draw_char_super_big(70, 1, ne);
-                    } else {
-                        fb_draw_char_super_big(70, 1, ne);
-                    }
+                    fb_draw_char_super_big(70, 1, ne);
                 }
-                fb_draw_char_big(87, 1, '?'); // '°C'
-                fb_draw_char_super_big(112, 1, BIG_CHAR_UP);
             }
-            if (TEMP_SOLL > 150) {
-                sprintf(text_out, "%3d", TEMP_SOLL - 10);
-                fb_draw_string(1, 0, text_out);
-            }
-            sprintf(text_out, "%2dW/%2d,%1dV", EE_soll_Power * 10, U_Supply / 10, U_Supply % 10);
-            fb_draw_string(40, 0, text_out);
-
-            if (TEMP_SOLL < 450) {
-                sprintf(text_out, "%3d", TEMP_SOLL + 10);
-                fb_draw_string(113, 0, text_out);
-            }
-
-            fb_show(); // </editor-fold>
+            fb_draw_char_big(87, 1, '?'); // '°C'
+            fb_draw_char_super_big(112, 1, BIG_CHAR_UP);
         }
-    }// </editor-fold>
+        if (TEMP_SOLL > 150) {
+            sprintf(text_out, "%3d", TEMP_SOLL - 10);
+            fb_draw_string(1, 0, text_out);
+        }
+        sprintf(text_out, "%2dW/%2d,%1dV", EE_soll_Power * 10, U_Supply / 10, U_Supply % 10);
+        fb_draw_string(40, 0, text_out);
+
+        if (TEMP_SOLL < 450) {
+            sprintf(text_out, "%3d", TEMP_SOLL + 10);
+            fb_draw_string(113, 0, text_out);
+        }
+
+        fb_show(); // </editor-fold>
     }
+}// </editor-fold>
 }
 
 void main(void)
@@ -813,7 +870,6 @@ void main(void)
                     mode = mode_off;
                     break;
                 case mode_off: // AUS-Zustand
-                    TIP_SUPPLY_EN_SetLow();
                     proc_off();
                     break;                
                 case mode_work: // normaler Betrieb

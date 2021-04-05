@@ -142,6 +142,7 @@ adc_result_t ADC_GetConversion(adc_channel_t channel)
     return ((adc_result_t)((ADRESH << 8) + ADRESL));
 }
 
+
 void ADC_TemperatureAcquisitionDelay(void)
 {
     __delay_us(200);
@@ -159,17 +160,17 @@ void ADC_ISR(void)
         AN_Sample[1][an_in_pos]= ADC_GetConversionResult();
         an_in_pos ++;
         
-        if(an_in_pos >= 8){
+        if(an_in_pos >= AN_IN_FILTER_SIZE){
             an_in_pos = 0;
             meassure_number = 0;
             AN_IN_Temp=0;
             AN_IN_U_Supply=0;
-            for(i=0;i<8;i++){
+            for(i=0;i<AN_IN_FILTER_SIZE;i++){
                 AN_IN_Temp+= AN_Sample[0][i];
                 AN_IN_U_Supply+= AN_Sample[1][i];
             }
-            AN_IN_Temp=AN_IN_Temp>>3;
-            AN_IN_U_Supply=AN_IN_U_Supply>>3;
+            AN_IN_Temp=AN_IN_Temp/AN_IN_FILTER_SIZE;
+            AN_IN_U_Supply=AN_IN_U_Supply/AN_IN_FILTER_SIZE;
         }
         else{
             ADC_StartConversion(AN2_Temp_Tip);

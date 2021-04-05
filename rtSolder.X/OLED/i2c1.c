@@ -50,12 +50,12 @@ void startI2C(void)
     while( SSP1CON2bits.SEN );        // Beendet, wenn SEN gelöscht wurde*
 }
  
-void restartI2C(void)
-{
-    idleI2C();                        // Ist der Bus frei?
-    SSP1CON2bits.RSEN=1;              // Auslösen einer RESTART-Sequenze
-    while( SSP1CON2bits.RSEN );       // Beendet, wenn RSEN gelöscht wurde*
-}
+//void restartI2C(void)
+//{
+//    idleI2C();                        // Ist der Bus frei?
+//    SSP1CON2bits.RSEN=1;              // Auslösen einer RESTART-Sequenze
+//    while( SSP1CON2bits.RSEN );       // Beendet, wenn RSEN gelöscht wurde*
+//}
  
 void stopI2C(void)
 {
@@ -76,34 +76,34 @@ uint8_t sendI2C(uint8_t byte)
     return ~SSP1CON2bits.ACKSTAT;     // Return 1: ACK empfangen, 0: kein ACK empfangen
 }
 
-uint8_t reciveI2C_nack(void)
-{
-    uint8_t incomming = 0;            // Einlesepuffer
- 
-    idleI2C();                        // Ist der Bus verfügbar?
-    PIR1bits.SSP1IF = 0;              // Flag löschen (wird in waitI2C() abgefragt)
-    SSP1CON2bits.RCEN = 1;            // Als Empfänger konfigurieren (wird autom. wieder gelöscht)
-    waitI2C();                        // Warten bis Übertragung (lesend) abgeschlossen ist
-    SSP1CON2bits.ACKDT = 1;           // Mit NACK quitieren (Nicht weiter einlesen)
-    SSP1CON2bits.ACKEN = 1;           // NACK aussenden
-    while( SSP1CON2bits.ACKEN );      // NACK abgeschlossen?
-    incomming = SSP1BUF;              // Empfangenes Byte in den Puffer
-        
-    return incomming;                 // Und zurück geben
-}
- 
-uint8_t reciveI2C_ack(void)
-{
-    uint8_t incomming = 0;            // Einlesepuffer
- 
-    idleI2C();                        // Ist der Bus verfügbar?
-    PIR1bits.SSP1IF = 0;              // Flag löschen (wird in waitI2C() abgefragt)
-    SSP1CON2bits.RCEN = 1;            // Als Empfänger konfigurieren (wird autom. wieder gelöscht)
-    waitI2C();                        // Warten bis Übertragung (lesend) abgeschlossen ist
-    SSP1CON2bits.ACKDT = 0;           // Mit AACK quitieren (weiter einlesen)
-    SSP1CON2bits.ACKEN = 1;           // ACK aussenden
-    while( SSP1CON2bits.ACKEN );      // ACK abgeschlossen?
-    incomming = SSP1BUF;              // Empfangenes Byte in den Puffer
- 
-    return incomming;                 // Und zurück geben
-}
+//uint8_t reciveI2C_nack(void)
+//{
+//    uint8_t incomming = 0;            // Einlesepuffer
+// 
+//    idleI2C();                        // Ist der Bus verfügbar?
+//    PIR1bits.SSP1IF = 0;              // Flag löschen (wird in waitI2C() abgefragt)
+//    SSP1CON2bits.RCEN = 1;            // Als Empfänger konfigurieren (wird autom. wieder gelöscht)
+//    waitI2C();                        // Warten bis Übertragung (lesend) abgeschlossen ist
+//    SSP1CON2bits.ACKDT = 1;           // Mit NACK quitieren (Nicht weiter einlesen)
+//    SSP1CON2bits.ACKEN = 1;           // NACK aussenden
+//    while( SSP1CON2bits.ACKEN );      // NACK abgeschlossen?
+//    incomming = SSP1BUF;              // Empfangenes Byte in den Puffer
+//        
+//    return incomming;                 // Und zurück geben
+//}
+// 
+//uint8_t reciveI2C_ack(void)
+//{
+//    uint8_t incomming = 0;            // Einlesepuffer
+// 
+//    idleI2C();                        // Ist der Bus verfügbar?
+//    PIR1bits.SSP1IF = 0;              // Flag löschen (wird in waitI2C() abgefragt)
+//    SSP1CON2bits.RCEN = 1;            // Als Empfänger konfigurieren (wird autom. wieder gelöscht)
+//    waitI2C();                        // Warten bis Übertragung (lesend) abgeschlossen ist
+//    SSP1CON2bits.ACKDT = 0;           // Mit AACK quitieren (weiter einlesen)
+//    SSP1CON2bits.ACKEN = 1;           // ACK aussenden
+//    while( SSP1CON2bits.ACKEN );      // ACK abgeschlossen?
+//    incomming = SSP1BUF;              // Empfangenes Byte in den Puffer
+// 
+//    return incomming;                 // Und zurück geben
+//}
