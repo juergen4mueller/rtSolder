@@ -16,16 +16,6 @@
         </group>
         <group name="eQ5"/>
         <group name="2021_SQ2_TSG"/>
-        <group>
-            <file>file:/Users/juergenmueller/OneDrive/Elektronik/rtSolder/rtSolder.X/mcc_generated_files/adc.h</file>
-            <file>file:/Users/juergenmueller/OneDrive/Elektronik/rtSolder/rtSolder.X/mcc_generated_files/memory.c</file>
-            <file>file:/Users/juergenmueller/OneDrive/Elektronik/rtSolder/rtSolder.X/main.c</file>
-            <file>file:/Users/juergenmueller/OneDrive/Elektronik/rtSolder/rtSolder.X/OLED/lcd.c</file>
-            <file>file:/Users/juergenmueller/OneDrive/Elektronik/rtSolder/rtSolder.X/mcc_generated_files/fvr.c</file>
-            <file>file:/Users/juergenmueller/OneDrive/Elektronik/rtSolder/rtSolder.X/mcc_generated_files/adc.c</file>
-            <file>file:/Users/juergenmueller/OneDrive/Elektronik/rtSolder/rtSolder.X/OLED/font.h</file>
-            <file>file:/Users/juergenmueller/OneDrive/Elektronik/rtSolder/rtSolder.X/mcc_generated_files/pin_manager.c</file>
-            <file>file:/Users/juergenmueller/OneDrive/Elektronik/rtSolder/rtSolder.X/OLED/i2c1.c</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>
