@@ -127,7 +127,7 @@ uint8_t solder_display_mode;
 
 uint8_t EE_solltemperatur;  // Faktor 10
 uint8_t EE_soll_Power;       // Faktor 10
-#define Auto_off_disabled   0x00
+#define Auto_off_disabled   0x00 
 #define Auto_off_2_min      0x01
 #define Auto_off_5_min      0x02
 #define Auto_off_10_min     0x03
