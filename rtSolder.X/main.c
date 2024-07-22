@@ -512,7 +512,7 @@ void proc_menue(void){
                         }
                     }
                     else if(switch_state == sw2_short){
-                        if(EE_solltemperatur < 43){
+                        if(EE_solltemperatur < 45){
                             EE_solltemperatur ++;
                             sprintf(text_out,"T:%3dC", (EE_solltemperatur * 10));
                             fb_draw_string_big( 20, 2, text_out);
